@@ -11,6 +11,8 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.util.Patterns;
 
+import org.json.JSONObject;
+
 import java.util.regex.Pattern;
 
 
@@ -23,7 +25,7 @@ public class MobileDataProvider extends IntentService {
 
     public class ACTION_GET_MOBILE_DATA {
         public static final String ACTION_NAME = "com.example.installed.practics1.utils.action.GET_MOBILE_DATA";
-        public static final String ACTION_RESPONSE_NAME = "com.example.installed.practics1.utils.action.GET_MOBILE_DATA";
+        public static final String ACTION_RESPONSE_NAME = "com.example.installed.practics1.utils.action.response.GET_MOBILE_DATA";
         public class INPUT_PARAMS {
 
         }

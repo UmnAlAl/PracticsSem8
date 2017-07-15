@@ -1,91 +1,107 @@
 package com.example.installed.practics1.utils;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
+import android.os.Build;
+import android.telephony.TelephonyManager;
+import android.util.Patterns;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- * <p>
- * TODO: Customize class - update intent actions, extra parameters and static
- * helper methods.
- */
+import java.io.IOException;
+import java.util.regex.Pattern;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+/*
+* Article: http://www.vogella.com/tutorials/JavaLibrary-OkHttp/article.html
+* Library OkHttp (import - https://developer.android.com/studio/build/dependencies.html)
+* */
+
 public class RemoteProvider extends IntentService {
-    // TODO: Rename actions, choose action names that describe tasks that this
-    // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
-    private static final String ACTION_FOO = "com.example.installed.practics1.utils.action.FOO";
-    private static final String ACTION_BAZ = "com.example.installed.practics1.utils.action.BAZ";
 
-    // TODO: Rename parameters
-    private static final String EXTRA_PARAM1 = "com.example.installed.practics1.utils.extra.PARAM1";
-    private static final String EXTRA_PARAM2 = "com.example.installed.practics1.utils.extra.PARAM2";
+    public class ACTION_SEND_DATA {
+        public static final String ACTION_NAME = "com.example.installed.practics1.utils.action.SEND_DATA";
+        public static final String ACTION_RESPONSE_NAME = "com.example.installed.practics1.utils.action.response.SEND_DATA";
+        public class INPUT_PARAMS {
+            public static final String URL = "com.example.installed.practics1.utils.extra.URL";
+            public static final String DATA = "com.example.installed.practics1.utils.extra.DATA";
+        }
+        public class OUTPUT_PARAMS {
+            public static final String URL = "com.example.installed.practics1.utils.extra.URL";
+            public static final String RESPONSE_DATA = "com.example.installed.practics1.utils.extra.RESPONSE_DATA";
+        }
+    }
+
+    OkHttpClient httpClient = new OkHttpClient();
+
+    public class ActionSendDataResult {
+        public String URL;
+        public String RESPONSE_DATA;
+        public ActionSendDataResult(Intent intent) {
+            URL = intent.getStringExtra(ACTION_SEND_DATA.OUTPUT_PARAMS.URL);
+            RESPONSE_DATA = intent.getStringExtra(ACTION_SEND_DATA.OUTPUT_PARAMS.RESPONSE_DATA);
+        }
+    }
 
     public RemoteProvider() {
         super("RemoteProvider");
     }
 
-    /**
-     * Starts this service to perform action Foo with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
-    public static void startActionFoo(Context context, String param1, String param2) {
+
+    public static void startActionSendData(Context context) {
         Intent intent = new Intent(context, RemoteProvider.class);
-        intent.setAction(ACTION_FOO);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
+        intent.setAction(ACTION_SEND_DATA.ACTION_NAME);
         context.startService(intent);
     }
 
-    /**
-     * Starts this service to perform action Baz with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
-    public static void startActionBaz(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, RemoteProvider.class);
-        intent.setAction(ACTION_BAZ);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
-        context.startService(intent);
-    }
+
 
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
             final String action = intent.getAction();
-            if (ACTION_FOO.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionFoo(param1, param2);
-            } else if (ACTION_BAZ.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionBaz(param1, param2);
+
+            if (ACTION_SEND_DATA.ACTION_NAME.equals(action)) {
+                String url = intent.getStringExtra(ACTION_SEND_DATA.INPUT_PARAMS.URL);
+                String data = intent.getStringExtra(ACTION_SEND_DATA.INPUT_PARAMS.DATA);
+                handleActionSendData(url, data);
             }
+
         }
     }
 
-    /**
-     * Handle action Foo in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionFoo(String param1, String param2) {
-        // TODO: Handle action Foo
-        throw new UnsupportedOperationException("Not yet implemented");
+
+    private void handleActionSendData(String url, String data) {
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction(ACTION_SEND_DATA.ACTION_RESPONSE_NAME);
+        broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
+
+        String response_data;
+        try {
+            response_data = doPostRequest(url, data);
+        }
+        catch (IOException ex) {
+            response_data = ex.getMessage();
+        }
+
+        broadcastIntent.putExtra(ACTION_SEND_DATA.OUTPUT_PARAMS.URL, url);
+        broadcastIntent.putExtra(ACTION_SEND_DATA.OUTPUT_PARAMS.RESPONSE_DATA, response_data);
+        sendBroadcast(broadcastIntent);
     }
 
-    /**
-     * Handle action Baz in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionBaz(String param1, String param2) {
-        // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
+
+    public String doPostRequest(String url, String json) throws IOException {
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
+        Request request = new Request.Builder().url(url).post(body).build();
+        Response response = httpClient.newCall(request).execute();
+        return response.body().toString();
     }
+
+
 }
