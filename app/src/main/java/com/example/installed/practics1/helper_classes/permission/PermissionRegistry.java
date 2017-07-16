@@ -13,10 +13,8 @@ public class PermissionRegistry implements IPermissionRegistry {
 
     private HashMap<String, Permission> _mapManifestNameToPermission = new HashMap<>();
     private HashMap<Integer, Permission> _mapMessageResultCodeToPermission = new HashMap<>();
-    private MainActivity _activity;
 
     public PermissionRegistry(MainActivity activity) {
-        _activity = activity;
 
     }
 

@@ -1,7 +1,5 @@
 package com.example.installed.practics1;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,8 +11,8 @@ import android.widget.ImageView;
 
 public class LogoFragment extends Fragment {
 
-    public ImageView LogoImageView;
-    public FrameLayout LogoFrameLayout;
+    public ImageView imageView;
+    public FrameLayout frameLayout;
 
     public LogoFragment() {
         // Required empty public constructor
@@ -37,8 +35,8 @@ public class LogoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_logo, container, false);
-        LogoFrameLayout = (FrameLayout) v.findViewById(R.id.FragmentLogoFrameLayout);
-        LogoImageView = (ImageView) v.findViewById(R.id.FragmentLogoImageView);
+        frameLayout = (FrameLayout) v.findViewById(R.id.FragmentLogoFrameLayout);
+        imageView = (ImageView) v.findViewById(R.id.FragmentLogoImageView);
         return v;
     }
 
