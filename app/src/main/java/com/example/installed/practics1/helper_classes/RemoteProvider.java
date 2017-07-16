@@ -1,16 +1,10 @@
-package com.example.installed.practics1.utils;
+package com.example.installed.practics1.helper_classes;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
-import android.os.Build;
-import android.telephony.TelephonyManager;
-import android.util.Patterns;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -26,15 +20,15 @@ import okhttp3.Response;
 public class RemoteProvider extends IntentService {
 
     public class ACTION_SEND_DATA {
-        public static final String ACTION_NAME = "com.example.installed.practics1.utils.action.SEND_DATA";
-        public static final String ACTION_RESPONSE_NAME = "com.example.installed.practics1.utils.action.response.SEND_DATA";
+        public static final String ACTION_NAME = "com.example.installed.practics1.helper_classes.action.SEND_DATA";
+        public static final String ACTION_RESPONSE_NAME = "com.example.installed.practics1.helper_classes.action.response.SEND_DATA";
         public class INPUT_PARAMS {
-            public static final String URL = "com.example.installed.practics1.utils.extra.URL";
-            public static final String DATA = "com.example.installed.practics1.utils.extra.DATA";
+            public static final String URL = "com.example.installed.practics1.helper_classes.extra.URL";
+            public static final String DATA = "com.example.installed.practics1.helper_classes.extra.DATA";
         }
         public class OUTPUT_PARAMS {
-            public static final String URL = "com.example.installed.practics1.utils.extra.URL";
-            public static final String RESPONSE_DATA = "com.example.installed.practics1.utils.extra.RESPONSE_DATA";
+            public static final String URL = "com.example.installed.practics1.helper_classes.extra.URL";
+            public static final String RESPONSE_DATA = "com.example.installed.practics1.helper_classes.extra.RESPONSE_DATA";
         }
     }
 

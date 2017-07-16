@@ -1,6 +1,9 @@
-package com.example.installed.practics1.utils.permission;
+package com.example.installed.practics1.helper_classes.permission;
+
+import com.example.installed.practics1.MainActivity;
 
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Created by Installed on 14.07.2017.
@@ -10,6 +13,12 @@ public class PermissionRegistry implements IPermissionRegistry {
 
     private HashMap<String, Permission> _mapManifestNameToPermission = new HashMap<>();
     private HashMap<Integer, Permission> _mapMessageResultCodeToPermission = new HashMap<>();
+    private MainActivity _activity;
+
+    public PermissionRegistry(MainActivity activity) {
+        _activity = activity;
+
+    }
 
     public void insertPermission(Permission permission) {
         _mapManifestNameToPermission.put(permission.getManifestName(), permission);
@@ -27,6 +36,14 @@ public class PermissionRegistry implements IPermissionRegistry {
 
     public Permission getPermissionByMessageResultCode(int code) {
         return _mapMessageResultCodeToPermission.get(code);
+    }
+
+    public Set<String> getPermissionsManifestNames() {
+        return _mapManifestNameToPermission.keySet();
+    }
+
+    public Set<Integer> getPermissionsResultCodes() {
+        return _mapMessageResultCodeToPermission.keySet();
     }
 
 }

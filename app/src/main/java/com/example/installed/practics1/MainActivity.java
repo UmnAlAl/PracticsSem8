@@ -1,6 +1,6 @@
 package com.example.installed.practics1;
 
-import android.app.Activity;
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,21 +10,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.installed.practics1.helper_classes.permission.PermissionRegistry;
+
 public class MainActivity extends AppCompatActivity {
 
     public class CONSTANTS {
         public class PERMISSIONS {
-            public class PERMISSION_REQUESTS{
-                public  static final int READ_PHONE_STATE = 0;
-            }
-            public class PERMISSION_MESSAGE_RESULT_CODES {
-                public class READ_PHONE_STATE {
+            public class READ_PHONE_STATE {
+                public static final String MANIFEST_NAME = Manifest.permission.READ_PHONE_STATE;
 
-                }
+            }
+            public class GET_ACCOUNTS {
+                public static final String MANIFEST_NAME = Manifest.permission.GET_ACCOUNTS;
+            }
+            public class INTERNET {
+                public static final String MANIFEST_NAME = Manifest.permission.INTERNET;
+            }
+            public class ACCESS_NETWORK_STATE {
+                public static final String MANIFEST_NAME = Manifest.permission.ACCESS_NETWORK_STATE;
+            }
+            public class WRITE_CALENDAR {
+                public static final String MANIFEST_NAME = Manifest.permission.WRITE_CALENDAR;
+            }
+            public class READ_CALENDAR {
+                public static final String MANIFEST_NAME = Manifest.permission.READ_CALENDAR;
             }
         }//permissions
 
     }
+
+
+    PermissionRegistry permissionRegistry;
 
 
     @Override
@@ -42,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        permissionRegistry = new PermissionRegistry(this);
     }
 
 
@@ -49,18 +67,6 @@ public class MainActivity extends AppCompatActivity {
     /*
     PERMISSIONS ************************************************************
      */
-
-    public boolean checkPermission(String permission) {
-        int permissionCheckResult = ContextCompat.checkSelfPermission(this, permission);
-        return (permissionCheckResult == PackageManager.PERMISSION_GRANTED);
-    }
-
-
-    public void tryToGetPermission(String permission) {
-        if(!checkPermission(permission)) {
-
-        }
-    }
 
 
     @Override

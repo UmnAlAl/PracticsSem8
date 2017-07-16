@@ -1,4 +1,4 @@
-package com.example.installed.practics1.utils.permission;
+package com.example.installed.practics1.helper_classes.permission;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -15,13 +15,13 @@ public abstract class Permission implements IOnPermissionGranted, IOnPermissionD
 
     private String _manifestName;
     private MainActivity _activity;
-    private int _messageResultCode;
+    private int _messageRequestCode;
 
 
-    public Permission(MainActivity activity, String manifestName, int messageResultCode) {
+    public Permission(MainActivity activity, String manifestName, int messageRequestCode) {
         _manifestName = manifestName;
         _activity = activity;
-        _messageResultCode = messageResultCode;
+        _messageRequestCode = messageRequestCode;
     }
 
 
@@ -37,14 +37,14 @@ public abstract class Permission implements IOnPermissionGranted, IOnPermissionD
                 OnRationale();
             }
             else {
-                ActivityCompat.requestPermissions(_activity, new String[]{_manifestName}, _messageResultCode);
+                ActivityCompat.requestPermissions(_activity, new String[]{_manifestName}, _messageRequestCode);
             }
         }
     }
 
 
     public String getManifestName() {return _manifestName;}
-    public int getMessageResultCode() {return _messageResultCode;}
+    public int getMessageResultCode() {return _messageRequestCode;}
     public Activity getActivity() {return _activity;}
 
 

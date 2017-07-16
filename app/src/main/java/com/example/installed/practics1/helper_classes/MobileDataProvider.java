@@ -1,17 +1,13 @@
-package com.example.installed.practics1.utils;
+package com.example.installed.practics1.helper_classes;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
-import android.icu.util.Calendar;
-import android.icu.util.GregorianCalendar;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.util.Patterns;
-
-import org.json.JSONObject;
 
 import java.util.regex.Pattern;
 
@@ -24,17 +20,17 @@ import java.util.regex.Pattern;
 public class MobileDataProvider extends IntentService {
 
     public class ACTION_GET_MOBILE_DATA {
-        public static final String ACTION_NAME = "com.example.installed.practics1.utils.action.GET_MOBILE_DATA";
-        public static final String ACTION_RESPONSE_NAME = "com.example.installed.practics1.utils.action.response.GET_MOBILE_DATA";
+        public static final String ACTION_NAME = "com.example.installed.practics1.helper_classes.action.GET_MOBILE_DATA";
+        public static final String ACTION_RESPONSE_NAME = "com.example.installed.practics1.helper_classes.action.response.GET_MOBILE_DATA";
         public class INPUT_PARAMS {
 
         }
         public class OUTPUT_PARAMS {
-            public static final String TELEPHONE_ID = "com.example.installed.practics1.utils.extra.TELEPHONE_ID";
-            public static final String TELEPHONE_NUMBER = "com.example.installed.practics1.utils.extra.TELEPHONE_NUMBER";
-            public static final String TELEPHONE_MODEL = "com.example.installed.practics1.utils.extra.TELEPHONE_MODEL";
-            public static final String EMAIL = "com.example.installed.practics1.utils.extra.EMAIL";
-            public static final String HOUR = "com.example.installed.practics1.utils.extra.HOUR";
+            public static final String TELEPHONE_ID = "com.example.installed.practics1.helper_classes.extra.TELEPHONE_ID";
+            public static final String TELEPHONE_NUMBER = "com.example.installed.practics1.helper_classes.extra.TELEPHONE_NUMBER";
+            public static final String TELEPHONE_MODEL = "com.example.installed.practics1.helper_classes.extra.TELEPHONE_MODEL";
+            public static final String EMAIL = "com.example.installed.practics1.helper_classes.extra.EMAIL";
+            public static final String HOUR = "com.example.installed.practics1.helper_classes.extra.HOUR";
         }
     }
 

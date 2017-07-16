@@ -1,0 +1,96 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/NumpadFragmentFrameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.installed.practics1.NumpadFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <GridLayout
+        android:id="@+id/NumpadFragmentGridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="3"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/NumpadFragmentButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/NumpadFragmentButton0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:background="@android:color/transparent"
+            android:text="0" />
+
+        <ImageButton
+            android:id="@+id/NumpadFragmentButtonDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/ic_backspace_grey" />
+    </GridLayout>
+</FrameLayout>
