@@ -2,7 +2,7 @@ package com.example.installed.practics1;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +10,15 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.installed.practics1.helper_classes.screen_controller.IOnInfoFragmentCreateView;
+
 
 public class InfoFragment extends Fragment {
 
-    FrameLayout frameLayout;
-    TextView textView;
+    public FrameLayout frameLayout;
+    public TextView textView;
+    public View view;
+    public IOnInfoFragmentCreateView onInfoFragmentCreateView;
 
     public InfoFragment() {
         // Required empty public constructor
@@ -25,8 +29,12 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_greeting, container, false);
+        view = v;
         frameLayout = (FrameLayout) v.findViewById(R.id.InfoFragmentFrameLayout);
         textView = (TextView) v.findViewById(R.id.InfoFragmentTextView);
+        if(onInfoFragmentCreateView != null) {
+            onInfoFragmentCreateView.OnInfoFragmentCreateView(this);
+        }
         return v;
     }
 

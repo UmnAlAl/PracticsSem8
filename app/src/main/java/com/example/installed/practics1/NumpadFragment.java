@@ -1,18 +1,19 @@
 package com.example.installed.practics1;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+
+import com.example.installed.practics1.helper_classes.screen_controller.IOnNumpadFragmentCreateView;
 
 
 /**
@@ -35,12 +36,14 @@ public class NumpadFragment extends Fragment {
     public Button btn7;
     public Button btn8;
     public Button btn9;
-    RadioButton radio0;
-    RadioButton radio1;
-    RadioButton radio2;
-    RadioButton radio3;
-    RadioButton radio4;
+    public RadioButton radio0;
+    public RadioButton radio1;
+    public RadioButton radio2;
+    public RadioButton radio3;
+    public RadioButton radio4;
     public ImageButton btnDel;
+    public View view;
+    public IOnNumpadFragmentCreateView onNumpadFragmentCreateView;
 
 
     public NumpadFragment() {
@@ -52,6 +55,7 @@ public class NumpadFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_numpad, container, false);
+        view = v;
         mainLinearLayout = (LinearLayout) v.findViewById(R.id.NumpadFragmentMainLinearLayout);
         gridLayoutButtons = (GridLayout) v.findViewById(R.id.NumpadFragmentGridLayoutButtons);
         gridLayoutRadios = (GridLayout) v.findViewById(R.id.NumpadFragmentGridLayoutRadios);
@@ -95,6 +99,9 @@ public class NumpadFragment extends Fragment {
             btn7.setText(Html.fromHtml(getResources().getString(R.string.fragment_numpad_button7_html)));
             btn8.setText(Html.fromHtml(getResources().getString(R.string.fragment_numpad_button8_html)));
             btn9.setText(Html.fromHtml(getResources().getString(R.string.fragment_numpad_button9_html)));
+        }
+        if(onNumpadFragmentCreateView != null) {
+            onNumpadFragmentCreateView.OnNumpadFragmentCreateView(this);
         }
         return v;
     }
