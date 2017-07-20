@@ -8,6 +8,10 @@ import com.example.installed.practics1.MainActivity;
 
 public class PrimitivePermission extends Permission {
 
+    public Boolean isGranted = false;
+    public Boolean isDenied = false;
+    public IPermissionGetResult permissionGetResult;
+
     public PrimitivePermission(MainActivity activity, String manifestName, int messageRequestCode) {
         super(activity, manifestName, messageRequestCode);
     }
@@ -16,7 +20,15 @@ public class PrimitivePermission extends Permission {
     public void OnRationale() {
         super.tryToGet();
     }
-    public void OnGranted() {}
-    public void OnDenied() {}
+
+
+    public void OnGranted() {
+        permissionGetResult.PermissionGetResult(this, true);
+    }
+
+
+    public void OnDenied() {
+        permissionGetResult.PermissionGetResult(this, false);
+    }
 
 }

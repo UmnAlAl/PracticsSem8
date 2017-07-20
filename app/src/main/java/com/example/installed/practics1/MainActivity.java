@@ -1,10 +1,13 @@
 package com.example.installed.practics1;
 
 import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.installed.practics1.helper_classes.MainActivityController;
+import com.example.installed.practics1.helper_classes.permission.IPermissionGetResult;
+import com.example.installed.practics1.helper_classes.permission.Permission;
 import com.example.installed.practics1.helper_classes.permission.PermissionRegistry;
 import com.example.installed.practics1.helper_classes.permission.PrimitivePermission;
 
@@ -14,27 +17,27 @@ public class MainActivity extends AppCompatActivity {
         public class PERMISSIONS {
             public class READ_PHONE_STATE {
                 public static final String MANIFEST_NAME = Manifest.permission.READ_PHONE_STATE;
-                public static final int REQUEST_CODE = 0;
+                public static final int REQUEST_CODE = 1;
             }
             public class GET_ACCOUNTS {
                 public static final String MANIFEST_NAME = Manifest.permission.GET_ACCOUNTS;
-                public static final int REQUEST_CODE = 1;
+                public static final int REQUEST_CODE = 2;
             }
             public class INTERNET {
                 public static final String MANIFEST_NAME = Manifest.permission.INTERNET;
-                public static final int REQUEST_CODE = 2;
+                public static final int REQUEST_CODE = 3;
             }
             public class ACCESS_NETWORK_STATE {
                 public static final String MANIFEST_NAME = Manifest.permission.ACCESS_NETWORK_STATE;
-                public static final int REQUEST_CODE = 3;
+                public static final int REQUEST_CODE = 4;
             }
             public class WRITE_CALENDAR {
                 public static final String MANIFEST_NAME = Manifest.permission.WRITE_CALENDAR;
-                public static final int REQUEST_CODE = 4;
+                public static final int REQUEST_CODE = 5;
             }
             public class READ_CALENDAR {
                 public static final String MANIFEST_NAME = Manifest.permission.READ_CALENDAR;
-                public static final int REQUEST_CODE = 5;
+                public static final int REQUEST_CODE = 6;
             }
         }//permissions
 
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     PermissionRegistry permissionRegistry;
-    MainActivityController uiController;
+    MainActivityController controller;
 
 
     @Override
@@ -50,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        uiController = new MainActivityController(this);
-        uiController.Start();
+        initPermissions();
+
+        controller = new MainActivityController(this);
+        controller.Start();
 
     }
 
@@ -93,6 +98,18 @@ public class MainActivity extends AppCompatActivity {
                 CONSTANTS.PERMISSIONS.WRITE_CALENDAR.MANIFEST_NAME,
                 CONSTANTS.PERMISSIONS.WRITE_CALENDAR.REQUEST_CODE
         );
+        IPermissionGetResult getPermissionHandler = new IPermissionGetResult() {
+            @Override
+            public void PermissionGetResult(Permission permission, Boolean isGot) {
+                //TODO?
+            }
+        };
+        p1.permissionGetResult = getPermissionHandler;
+        p2.permissionGetResult = getPermissionHandler;
+        p3.permissionGetResult = getPermissionHandler;
+        p4.permissionGetResult = getPermissionHandler;
+        p5.permissionGetResult = getPermissionHandler;
+        p6.permissionGetResult = getPermissionHandler;
         permissionRegistry.insertPermission(p1);
         permissionRegistry.insertPermission(p2);
         permissionRegistry.insertPermission(p3);
@@ -107,10 +124,21 @@ public class MainActivity extends AppCompatActivity {
         p6.tryToGet();
     }
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
 
+        Permission permission = permissionRegistry.getPermissionByMessageResultCode(requestCode);
+        if (permission != null) {
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                permission.OnGranted();
+            }
+            else {
+                permission.OnDenied();
+            }
+        }
     }
+
 
 }

@@ -28,7 +28,7 @@ public class InfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_greeting, container, false);
+        View v = inflater.inflate(R.layout.fragment_info, container, false);
         view = v;
         frameLayout = (FrameLayout) v.findViewById(R.id.InfoFragmentFrameLayout);
         textView = (TextView) v.findViewById(R.id.InfoFragmentTextView);

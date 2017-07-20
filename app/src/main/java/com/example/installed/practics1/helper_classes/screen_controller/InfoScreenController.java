@@ -10,12 +10,13 @@ import com.example.installed.practics1.R;
  * Created by Installed on 19.07.2017.
  */
 
-public class InfoScreenController implements IShow, IRemove, IOnLogoFragmentCreateView, IOnInfoFragmentCreateView {
+public class InfoScreenController implements IShow<InfoScreenMetadata>, IRemove, IOnLogoFragmentCreateView, IOnInfoFragmentCreateView {
 
 
     public LogoFragment logoFragment;
     public InfoFragment infoFragment;
     public MainActivity activity;
+    public InfoScreenMetadata metadata;
     public IOnInfoScreenControllerViewCreated onInfoScreenControllerViewCreated;
     private Boolean isLogoCreated = false;
     private Boolean isInfoCreated = false;
@@ -30,10 +31,13 @@ public class InfoScreenController implements IShow, IRemove, IOnLogoFragmentCrea
     }
 
 
-    public void Show() {
+    public void Show(InfoScreenMetadata metadata) {
+        this.metadata = metadata;
         activity.getFragmentManager().beginTransaction()
-                .add(R.id.MainActivityLinearLayout, logoFragment)
-                .add(R.id.MainActivityLinearLayout, infoFragment)
+                .add(R.id.MainActivityRelativeLayout, logoFragment)
+                .commit();
+        activity.getFragmentManager().beginTransaction()
+                .add(R.id.MainActivityRelativeLayout, infoFragment)
                 .commit();
     }
 

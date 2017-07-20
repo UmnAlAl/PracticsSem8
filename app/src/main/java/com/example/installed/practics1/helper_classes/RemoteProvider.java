@@ -48,9 +48,11 @@ public class RemoteProvider extends IntentService {
     }
 
 
-    public static void startActionSendData(Context context) {
+    public static void startActionSendData(Context context, String url, String data) {
         Intent intent = new Intent(context, RemoteProvider.class);
         intent.setAction(ACTION_SEND_DATA.ACTION_NAME);
+        intent.putExtra(ACTION_SEND_DATA.INPUT_PARAMS.URL, url);
+        intent.putExtra(ACTION_SEND_DATA.INPUT_PARAMS.DATA, data);
         context.startService(intent);
     }
 
@@ -94,7 +96,7 @@ public class RemoteProvider extends IntentService {
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         Request request = new Request.Builder().url(url).post(body).build();
         Response response = httpClient.newCall(request).execute();
-        return response.body().toString();
+        return response.body().string();
     }
 
 

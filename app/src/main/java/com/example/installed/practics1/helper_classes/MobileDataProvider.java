@@ -61,7 +61,6 @@ public class MobileDataProvider extends IntentService {
     }
 
 
-
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
