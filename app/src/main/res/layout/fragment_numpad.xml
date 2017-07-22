@@ -180,22 +180,19 @@
 
             <Button
                 android:id="@+id/NumpadFragmentButton1"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button1_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton2"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button2_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton3"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button3_text" />
         </TableRow>
@@ -206,50 +203,42 @@
 
             <Button
                 android:id="@+id/NumpadFragmentButton4"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button4_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton5"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button5_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton6"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button6_text" />
         </TableRow>
 
         <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
             android:gravity="center"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/NumpadFragmentButton7"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button7_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton8"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button8_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton9"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button9_text" />
         </TableRow>
@@ -261,16 +250,14 @@
             <Button
                 android:id="@+id/NumpadFragmentButton0"
                 android:layout_column="1"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/fragment_numpad_button0_text" />
 
 
             <ImageButton
                 android:id="@+id/NumpadFragmentButtonDel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
@@ -285,8 +272,7 @@
 
             <Button
                 android:id="@+id/NumpadFragmentButtonCall"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:layout_gravity="center_horizontal"
                 android:layout_span="3"
                 android:background="@android:color/transparent"

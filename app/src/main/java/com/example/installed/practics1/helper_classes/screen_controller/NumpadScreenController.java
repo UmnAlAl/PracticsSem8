@@ -278,7 +278,7 @@ public class NumpadScreenController implements IShow<NumpadScreenMetada>, IRemov
                         @Override
                         public void onClick(View v) {
                             if(!currentCode.isEmpty()) {
-                                getRadio(curPos).setChecked(false);
+                                getRadio(curPos - 1).setChecked(false);
                                 currentCode.pop();
                                 curPos--;
                             }

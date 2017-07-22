@@ -49,6 +49,8 @@ public class GreetingScreenController implements IShow<GreetingScreenMetadata>, 
 
 
     public void Remove() {
+        isLogoCreated = false;
+        isGreetingCreated = false;
         activity.getFragmentManager().beginTransaction()
                 .remove(logoFragment)
                 .remove(progressBarFragment)
