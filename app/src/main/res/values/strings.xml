@@ -15,15 +15,13 @@
     <string name="fragment_numpad_buttonCall_text">Make a call.</string>
     <string name="fragment_numpad_button0_html"><font size='20'>0</font><br /><font color='grey' size='10'></font></string>
     <string name="fragment_numpad_button1_html"><font size='20'>1</font><br /><font color='grey' size='10'></font></string>
-    <string name="fragment_numpad_button2_html"><font size='20'>2</font><br /><font color='grey' size='10'>ABC</font></string>
-    <string name="fragment_numpad_button3_html"><font size='20'>3</font><br /><font color='grey' size='10'>DEF</font></string>
-    <string name="fragment_numpad_button4_html"><font size='20'>4</font><br /><font color='grey' size='10'>GHI</font></string>
-    <string name="fragment_numpad_button5_html"><font size='20'>5</font><br /><font color='grey' size='10'>JKL</font></string>
-    <string name="fragment_numpad_button6_html"><font size='20'>6</font><br /><font color='grey' size='10'>MNO</font></string>
-    <string name="fragment_numpad_button7_html"><font size='20'>7</font><br /><font color='grey' size='10'>PQRS</font></string>
-    <string name="fragment_numpad_button8_html"><font size='20'>8</font><br /><font color='grey' size='10'>TUV</font></string>
-    <string name="fragment_numpad_button9_html"><font size='20'>9</font><br /><font color='grey' size='10'>WXYZ</font></string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_numpad_button2_html"><font size='20'>2</font>\n<br /><font color='grey' size='10'>ABC</font></string>
+    <string name="fragment_numpad_button3_html"><font size='20'>3</font>\n<br /><font color='grey' size='10'>DEF</font></string>
+    <string name="fragment_numpad_button4_html"><font size='20'>4</font>\n<br /><font color='grey' size='10'>GHI</font></string>
+    <string name="fragment_numpad_button5_html"><font size='20'>5</font>\n<br /><font color='grey' size='10'>JKL</font></string>
+    <string name="fragment_numpad_button6_html"><font size='20'>6</font>\n<br /><font color='grey' size='10'>MNO</font></string>
+    <string name="fragment_numpad_button7_html"><font size='20'>7</font>\n<br /><font color='grey' size='10'>PQRS</font></string>
+    <string name="fragment_numpad_button8_html"><font size='20'>8</font>\n<br /><font color='grey' size='10'>TUV</font></string>
+    <string name="fragment_numpad_button9_html"><font size='20'>9</font>\n<br /><font color='grey' size='10'>WXYZ</font></string>
+    <string name="hello_blank_fragment">Подождите, пожалуйста...</string>
 </resources>

@@ -47,7 +47,7 @@ public class LoadingScreenController implements IShow<LoadingScreenMetadata>, IR
 
     public void OnLogoFragmentCreateView(LogoFragment logoFragment) {
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT);
+                FrameLayout.LayoutParams.MATCH_PARENT);
         params.gravity = Gravity.CENTER;
         logoFragment.frameLayout.setLayoutParams(params);
         if(metadata != null) {

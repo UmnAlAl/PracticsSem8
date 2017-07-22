@@ -1,9 +1,11 @@
 package com.example.installed.practics1;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 
 import com.example.installed.practics1.helper_classes.MainActivityController;
 import com.example.installed.practics1.helper_classes.permission.IPermissionGetResult;
@@ -58,8 +60,18 @@ public class MainActivity extends AppCompatActivity {
         controller = new MainActivityController(this);
         controller.Start();
 
+        ActionBar actionBar = getActionBar();
+        if(actionBar != null) {
+            actionBar.show();
+        }
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
 
     /*

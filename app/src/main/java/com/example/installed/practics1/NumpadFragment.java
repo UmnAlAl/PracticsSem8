@@ -12,6 +12,7 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TableLayout;
 
 import com.example.installed.practics1.helper_classes.screen_controller.IOnNumpadFragmentCreateView;
 
@@ -25,7 +26,7 @@ public class NumpadFragment extends Fragment {
 
     public LinearLayout mainLinearLayout;
     public GridLayout gridLayoutRadios;
-    public GridLayout gridLayoutButtons;
+    public TableLayout tableLayoutButtons;
     public Button btn0;
     public Button btn1;
     public Button btn2;
@@ -57,7 +58,7 @@ public class NumpadFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_numpad, container, false);
         view = v;
         mainLinearLayout = (LinearLayout) v.findViewById(R.id.NumpadFragmentMainLinearLayout);
-        gridLayoutButtons = (GridLayout) v.findViewById(R.id.NumpadFragmentGridLayoutButtons);
+        tableLayoutButtons = (TableLayout) v.findViewById(R.id.NumpadFragmentTableLayoutButtons);
         gridLayoutRadios = (GridLayout) v.findViewById(R.id.NumpadFragmentGridLayoutRadios);
 
         btn0 = (Button) v.findViewById(R.id.NumpadFragmentButton0);

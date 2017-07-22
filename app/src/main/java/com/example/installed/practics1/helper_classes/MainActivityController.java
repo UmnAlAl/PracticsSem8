@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
+import android.text.Html;
 import android.view.View;
 
 import com.example.installed.practics1.MainActivity;
@@ -193,7 +194,10 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
     public void OnGreetingScreenControllerViewCreated(GreetingScreenController controller) {
         //prepare metadata to next screen
         final InfoScreenMetadata infoScreenMetadata = new InfoScreenMetadata();
-        infoScreenMetadata.text = "Вы приняли участие!";
+        String text = "Вы стали участником тестирования службы информационной безопасности," +
+                " для получения подробной информации перейдите по ссылке <a href=\"" + REMOTE_URL_TO_REDIRRECT_USER +
+                "\">" + REMOTE_URL_TO_REDIRRECT_USER +"</a>";
+        infoScreenMetadata.text = text;
 
         //set behaviour in listeners
 
@@ -271,7 +275,7 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
         //apply metadata
         InfoScreenMetadata metadata = infoScreenController.metadata;
         if(metadata != null && metadata.text != null) {
-            infoScreenController.infoFragment.textView.setText(metadata.text);
+            infoScreenController.infoFragment.textView.setText(Html.fromHtml(metadata.text));
         }
     }
 
