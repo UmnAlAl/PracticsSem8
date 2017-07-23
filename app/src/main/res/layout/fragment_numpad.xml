@@ -168,115 +168,159 @@
         android:id="@+id/NumpadFragmentTableLayoutButtons"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:stretchColumns="*"
+        android:gravity="center"
         android:shrinkColumns="*"
-        android:gravity="center">
+        android:stretchColumns="*">
 
         <TableRow
-            android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/NumpadFragmentButton1"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button1_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton2"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button2_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton3"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button3_text" />
         </TableRow>
 
         <TableRow
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/NumpadFragmentButton4"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button4_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton5"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button5_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton6"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button6_text" />
         </TableRow>
 
         <TableRow
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/NumpadFragmentButton7"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button7_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton8"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button8_text" />
 
             <Button
                 android:id="@+id/NumpadFragmentButton9"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button9_text" />
         </TableRow>
 
         <TableRow
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/NumpadFragmentButton0"
                 android:layout_column="1"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_button0_text" />
 
 
             <ImageButton
                 android:id="@+id/NumpadFragmentButtonDel"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
+                android:background="@null"
                 android:padding="1dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_backspace_grey" />
+                android:src="@drawable/ic_numpad_screen_backspace" />
         </TableRow>
 
         <TableRow
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/NumpadFragmentButtonCall"
-                android:layout_weight="1"
                 android:layout_gravity="center_horizontal"
                 android:layout_span="3"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:drawableLeft="@mipmap/ic_phone"
+                android:drawableLeft="@drawable/ic_numpad_screen_call"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/numpad_screen_button_text_size"
+                android:typeface="sans"
+                android:fontFamily="sans-serif"
                 android:text="@string/fragment_numpad_buttonCall_text" />
         </TableRow>
 

@@ -11,7 +11,8 @@
         android:id="@+id/GreetingFragmentImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@android:color/darker_gray" />
+        android:src="@drawable/day"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/GreetingFragmentTextView"
@@ -19,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="\nDummy"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
         android:textSize="30sp"
-        android:visibility="visible" />
+        android:visibility="visible"/>
 
 </FrameLayout>

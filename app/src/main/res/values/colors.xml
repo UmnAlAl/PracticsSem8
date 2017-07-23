@@ -5,7 +5,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     -->
-    <color name="colorPrimary">#00c853</color>
-    <color name="colorPrimaryDark">#81c784</color>
+    <color name="colorPrimary">#299d30</color>
+    <color name="colorPrimaryDark">#299d30</color>
     <color name="colorAccent">#43a047</color>
+    <color name="colorBack">#c8e6c9</color>
 </resources>

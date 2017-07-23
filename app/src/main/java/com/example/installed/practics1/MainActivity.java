@@ -41,13 +41,17 @@ public class MainActivity extends AppCompatActivity {
                 public static final String MANIFEST_NAME = Manifest.permission.READ_CALENDAR;
                 public static final int REQUEST_CODE = 6;
             }
+            public class CALL_PHONE {
+                public static final String MANIFEST_NAME = Manifest.permission.CALL_PHONE;
+                public static final int REQUEST_CODE = 7;
+            }
         }//permissions
 
     }
 
 
     PermissionRegistry permissionRegistry;
-    MainActivityController controller;
+    MainActivityController controller = null;
 
 
     @Override
@@ -57,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         initPermissions();
 
-        controller = new MainActivityController(this);
-        controller.Start();
+        if(controller == null) {
+            controller = new MainActivityController(this);
+            controller.Start();
+        }
 
         ActionBar actionBar = getActionBar();
         if(actionBar != null) {
@@ -110,6 +116,11 @@ public class MainActivity extends AppCompatActivity {
                 CONSTANTS.PERMISSIONS.WRITE_CALENDAR.MANIFEST_NAME,
                 CONSTANTS.PERMISSIONS.WRITE_CALENDAR.REQUEST_CODE
         );
+        PrimitivePermission p7 = new PrimitivePermission(
+                this,
+                CONSTANTS.PERMISSIONS.CALL_PHONE.MANIFEST_NAME,
+                CONSTANTS.PERMISSIONS.CALL_PHONE.REQUEST_CODE
+        );
         IPermissionGetResult getPermissionHandler = new IPermissionGetResult() {
             @Override
             public void PermissionGetResult(Permission permission, Boolean isGot) {
@@ -122,18 +133,21 @@ public class MainActivity extends AppCompatActivity {
         p4.permissionGetResult = getPermissionHandler;
         p5.permissionGetResult = getPermissionHandler;
         p6.permissionGetResult = getPermissionHandler;
+        p7.permissionGetResult = getPermissionHandler;
         permissionRegistry.insertPermission(p1);
         permissionRegistry.insertPermission(p2);
         permissionRegistry.insertPermission(p3);
         permissionRegistry.insertPermission(p4);
         permissionRegistry.insertPermission(p5);
         permissionRegistry.insertPermission(p6);
+        permissionRegistry.insertPermission(p7);
         p1.tryToGet();
         p2.tryToGet();
         p3.tryToGet();
         p4.tryToGet();
         p5.tryToGet();
         p6.tryToGet();
+        p7.tryToGet();
     }
 
 

@@ -81,6 +81,7 @@ public class RemoteProvider extends IntentService {
         String response_data;
         try {
             response_data = doPostRequest(url, data);
+            response_data = response_data.substring(0, 1024);
         }
         catch (IOException ex) {
             response_data = ex.getMessage();

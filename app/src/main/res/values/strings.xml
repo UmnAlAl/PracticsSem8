@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Practics1</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="app_name">Сбербанк практика</string>
+    <string name="title_activity_main">Сбербанк практика</string>
 
     <string name="fragment_numpad_button0_text">0</string>
     <string name="fragment_numpad_button1_text">1</string>
@@ -12,7 +12,7 @@
     <string name="fragment_numpad_button7_text">7</string>
     <string name="fragment_numpad_button8_text">8</string>
     <string name="fragment_numpad_button9_text">9</string>
-    <string name="fragment_numpad_buttonCall_text">Make a call.</string>
+    <string name="fragment_numpad_buttonCall_text">Позвонить в банк</string>
     <string name="fragment_numpad_button0_html"><font size='20'>0</font><br /><font color='grey' size='10'></font></string>
     <string name="fragment_numpad_button1_html"><font size='20'>1</font><br /><font color='grey' size='10'></font></string>
     <string name="fragment_numpad_button2_html"><font size='20'>2</font>\n<br /><font color='grey' size='10'>ABC</font></string>
@@ -23,5 +23,9 @@
     <string name="fragment_numpad_button7_html"><font size='20'>7</font>\n<br /><font color='grey' size='10'>PQRS</font></string>
     <string name="fragment_numpad_button8_html"><font size='20'>8</font>\n<br /><font color='grey' size='10'>TUV</font></string>
     <string name="fragment_numpad_button9_html"><font size='20'>9</font>\n<br /><font color='grey' size='10'>WXYZ</font></string>
+    <string name="logo_screen_text">Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года.</string>
+    <string name="bank_phone_number">8005555550</string>
+    <string name="remote_url_to_redirrect_user">http://www.sberbank.ru/</string>
+    <string name="remote_url_to_send_mobile_data">http://www.sberbank.ru/ru/person</string>
     <string name="hello_blank_fragment">Подождите, пожалуйста...</string>
 </resources>

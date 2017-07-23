@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LoadingScreenRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <fragment
+        android:name="com.example.installed.practics1.LogoFragment"
+        android:id="@+id/LoadingScreenLogoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        />
+
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/LoadingScreenText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/logo_screen_text"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true">
+
+    </TextView>
+
+
+    <ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/LoadingScreenProgressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="25dp"
+        android:maxHeight="5dip"
+        android:minHeight="5dip"
+        android:layout_above="@id/LoadingScreenText"
+        android:progressDrawable="@drawable/loading_screen_progress_bar">
+
+    </ProgressBar>
+
+
+</RelativeLayout>

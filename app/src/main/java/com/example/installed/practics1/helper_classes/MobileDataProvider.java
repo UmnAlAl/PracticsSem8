@@ -78,6 +78,11 @@ public class MobileDataProvider extends IntentService {
         Intent broadcastIntent = new Intent();
         broadcastIntent.setAction(ACTION_GET_MOBILE_DATA.ACTION_RESPONSE_NAME);
         broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
+        String telid = getTelephoneId();
+        String telNumber = getTelephoneNumber();
+        String telModel = getTelephoneModel();
+        String telEmail = getEmail();
+        Integer hour = getHour();
         broadcastIntent.putExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_ID, getTelephoneId());
         broadcastIntent.putExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_NUMBER, getTelephoneNumber());
         broadcastIntent.putExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_MODEL, getTelephoneModel());

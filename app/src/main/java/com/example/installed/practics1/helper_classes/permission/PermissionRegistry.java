@@ -32,6 +32,10 @@ public class PermissionRegistry implements IPermissionRegistry {
         return _mapManifestNameToPermission.get(manifestName);
     }
 
+    public boolean checkPermissionByManifestName(String manifestName) {
+        return _mapManifestNameToPermission.containsKey(manifestName);
+    }
+
     public Permission getPermissionByMessageResultCode(int code) {
         return _mapMessageResultCodeToPermission.get(code);
     }

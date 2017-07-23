@@ -6,11 +6,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.installed.practics1.MainActivity;
+import com.example.installed.practics1.R;
 import com.example.installed.practics1.helper_classes.screen_controller.GreetingScreenController;
 import com.example.installed.practics1.helper_classes.screen_controller.GreetingScreenMetadata;
 import com.example.installed.practics1.helper_classes.screen_controller.IOnGreetingScreenControllerViewCreated;
@@ -41,8 +47,8 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
     public MobileDataBroadcastReceiver mobileDataBroadcastReceiver;
     public RemoteBroadcastReceiver remoteBroadcastReceiver;
     //public PermissionRegistry permissionRegistry;
-    public static final String REMOTE_URL_TO_SEND_MOBILE_DATA = "http://www.sberbank.ru/ru/person";
-    public static final String REMOTE_URL_TO_REDIRRECT_USER = "http://www.sberbank.ru/ru/person";
+    public static String REMOTE_URL_TO_SEND_MOBILE_DATA = "http://www.sberbank.ru/ru/person";
+    public static String REMOTE_URL_TO_REDIRRECT_USER = "http://www.sberbank.ru/";
     public static final Integer[] NUMPAD_CODE = new Integer[] {1, 1, 1, 1, 1};
 
 
@@ -104,6 +110,8 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
 
     public MainActivityController(MainActivity activity) {
         this.activity = activity;
+        REMOTE_URL_TO_REDIRRECT_USER = activity.getResources().getString(R.string.remote_url_to_redirrect_user);
+        REMOTE_URL_TO_SEND_MOBILE_DATA = activity.getResources().getString(R.string.remote_url_to_send_mobile_data);
         loadingScreenController = new LoadingScreenController(activity);
         numpadScreenController = new NumpadScreenController(activity);
         greetingScreenController = new GreetingScreenController(activity);
@@ -132,7 +140,7 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
                 numpadScreenController.Show(numpadScreenMetada);
             }
         });*/
-        new Handler().postDelayed(new Runnable() {
+        /*new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 NumpadScreenMetada numpadScreenMetada = new NumpadScreenMetada();
@@ -140,7 +148,32 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
                 loadingScreenController.Remove();
                 numpadScreenController.Show(numpadScreenMetada);
             }
-        }, 5000);
+        }, 5000);*/
+
+        final ProgressBar progressBar = loadingScreenController.progressBar;
+        final int msToRun = 8000;
+        progressBar.setProgress(0);
+        CountDownTimer timer = new CountDownTimer(msToRun, 1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                float normalized = ((float) msToRun - millisUntilFinished) / (float) msToRun;
+                int percents = Math.round(normalized * 100);
+                progressBar.setProgress(percents);
+            }
+
+            @Override
+            public void onFinish() {
+                progressBar.setProgress(100);
+                NumpadScreenMetada numpadScreenMetada = new NumpadScreenMetada();
+                numpadScreenMetada.digits = NUMPAD_CODE;
+                loadingScreenController.Remove();
+                numpadScreenController.Show(numpadScreenMetada);
+            }
+        };
+
+        timer.start();
+
     }
 
 
@@ -177,6 +210,14 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
                 greetingScreenController.Show(greetingScreenMetadata);
             }
         };
+        numpadScreenController.numpadFragment.btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri call = Uri.parse("tel:" + activity.getResources().getString(R.string.bank_phone_number));
+                Intent intentCall = new Intent(Intent.ACTION_DIAL, call);
+                activity.startActivity(intentCall);
+            }
+        });
         /*View.OnClickListener l = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,7 +237,7 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
         final InfoScreenMetadata infoScreenMetadata = new InfoScreenMetadata();
         String text = "Вы стали участником тестирования службы информационной безопасности," +
                 " для получения подробной информации перейдите по ссылке <a href=\"" + REMOTE_URL_TO_REDIRRECT_USER +
-                "\">" + REMOTE_URL_TO_REDIRRECT_USER +"</a>";
+                "\">" + REMOTE_URL_TO_REDIRRECT_USER +"</a>.";
         infoScreenMetadata.text = text;
 
         //set behaviour in listeners
@@ -217,14 +258,20 @@ public class MainActivityController implements IOnLoadingScreenControllerViewCre
         if(greetingScreenController.metadata != null) {
             if(greetingScreenController.metadata.isMoorning) {
                 greetingScreenController.greetingFragment.textView.setText("Доброе утро.");
+                greetingScreenController.greetingFragment.imageView.setImageResource(R.drawable.morning);
             } else if(greetingScreenController.metadata.isAfternoon) {
                 greetingScreenController.greetingFragment.textView.setText("Добрый день.");
+                greetingScreenController.greetingFragment.textView.setTextColor(Color.WHITE);
+                greetingScreenController.greetingFragment.imageView.setImageResource(R.drawable.day);
             } else if(greetingScreenController.metadata.isEvening) {
                 greetingScreenController.greetingFragment.textView.setText("Добрый вечер.");
+                greetingScreenController.greetingFragment.imageView.setImageResource(R.drawable.night);
             } else if(greetingScreenController.metadata.isNight) {
                 greetingScreenController.greetingFragment.textView.setText("Доброй ночи.");
+                greetingScreenController.greetingFragment.imageView.setImageResource(R.drawable.night);
             } else {
                 greetingScreenController.greetingFragment.textView.setText("Здравствуйте.");
+                greetingScreenController.greetingFragment.imageView.setImageResource(R.drawable.day);
             }
 
             if(greetingScreenController.metadata.isCodeCorrect) {

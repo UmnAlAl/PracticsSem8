@@ -2,6 +2,8 @@ package com.example.installed.practics1;
 
 
 import android.app.Fragment;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -43,6 +45,7 @@ public class NumpadFragment extends Fragment {
     public RadioButton radio3;
     public RadioButton radio4;
     public ImageButton btnDel;
+    public Button btnCall;
     public View view;
     public IOnNumpadFragmentCreateView onNumpadFragmentCreateView;
 
@@ -71,6 +74,19 @@ public class NumpadFragment extends Fragment {
         btn7 = (Button) v.findViewById(R.id.NumpadFragmentButton7);
         btn8 = (Button) v.findViewById(R.id.NumpadFragmentButton8);
         btn9 = (Button) v.findViewById(R.id.NumpadFragmentButton9);
+        btnCall = (Button) v.findViewById(R.id.NumpadFragmentButtonCall);
+
+        btn0.setTransformationMethod(null);
+        btn1.setTransformationMethod(null);
+        btn2.setTransformationMethod(null);
+        btn3.setTransformationMethod(null);
+        btn4.setTransformationMethod(null);
+        btn5.setTransformationMethod(null);
+        btn6.setTransformationMethod(null);
+        btn7.setTransformationMethod(null);
+        btn8.setTransformationMethod(null);
+        btn9.setTransformationMethod(null);
+        btnCall.setTransformationMethod(null);
 
         radio0 = (RadioButton) v.findViewById(R.id.NumpadFragmentRadioButton0);
         radio0.setClickable(false);

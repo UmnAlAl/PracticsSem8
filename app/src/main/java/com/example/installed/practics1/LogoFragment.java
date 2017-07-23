@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.installed.practics1.helper_classes.screen_controller.IOnLogoFragmentCreateView;
+import com.example.installed.practics1.helper_classes.screen_controller.IOnLogoFragmentStart;
 
 
 public class LogoFragment extends Fragment {
@@ -17,6 +18,8 @@ public class LogoFragment extends Fragment {
     public FrameLayout frameLayout;
     public View view;
     public IOnLogoFragmentCreateView onLogoFragmentCreateView;
+    public IOnLogoFragmentStart onLogoFragmentStart;
+    public boolean isFirstRun = true;
 
     public LogoFragment() {
         // Required empty public constructor
@@ -49,4 +52,12 @@ public class LogoFragment extends Fragment {
         return v;
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(onLogoFragmentStart != null) {
+            onLogoFragmentStart.OnLogoFragmentStart(this);
+        }
+    }
 }
