@@ -40,6 +40,9 @@ public abstract class Permission implements IOnPermissionGranted, IOnPermissionD
                 ActivityCompat.requestPermissions(_activity, new String[]{_manifestName}, _messageRequestCode);
             }
         }
+        else {
+            OnGranted();
+        }
     }
 
 

@@ -49,9 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    PermissionRegistry permissionRegistry;
-    MainActivityController controller = null;
+    public PermissionRegistry permissionRegistry;
+    public MainActivityController controller = null;
 
 
     @Override
@@ -59,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initPermissions();
+        //initPermissions();
+
+        permissionRegistry = new PermissionRegistry(this);
 
         if(controller == null) {
             controller = new MainActivityController(this);

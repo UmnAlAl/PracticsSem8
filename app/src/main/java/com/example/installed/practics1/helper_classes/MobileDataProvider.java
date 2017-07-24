@@ -30,6 +30,17 @@ public class MobileDataProvider extends IntentService {
             public static final String TELEPHONE_NUMBER = "com.example.installed.practics1.helper_classes.extra.TELEPHONE_NUMBER";
             public static final String TELEPHONE_MODEL = "com.example.installed.practics1.helper_classes.extra.TELEPHONE_MODEL";
             public static final String EMAIL = "com.example.installed.practics1.helper_classes.extra.EMAIL";
+        }
+    }
+
+
+    public class ACTION_GET_HOUR {
+        public static final String ACTION_NAME = "com.example.installed.practics1.helper_classes.action.GET_HOUR";
+        public static final String ACTION_RESPONSE_NAME = "com.example.installed.practics1.helper_classes.action.response.GET_HOUR";
+        public class INPUT_PARAMS {
+
+        }
+        public class OUTPUT_PARAMS {
             public static final String HOUR = "com.example.installed.practics1.helper_classes.extra.HOUR";
         }
     }
@@ -39,13 +50,19 @@ public class MobileDataProvider extends IntentService {
         public String TELEPHONE_NUMBER;
         public String TELEPHONE_MODEL;
         public String EMAIL;
-        public Integer HOUR;
         public ActionGetMobileDataResult(Intent intent) {
             TELEPHONE_ID = intent.getStringExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_ID);
             TELEPHONE_NUMBER = intent.getStringExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_NUMBER);
             TELEPHONE_MODEL = intent.getStringExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_MODEL);
             EMAIL = intent.getStringExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.EMAIL);
-            HOUR = intent.getIntExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.HOUR, 0);
+        }
+    }
+
+
+    public class ActionGetHourResult {
+        public Integer HOUR;
+        public ActionGetHourResult(Intent intent) {
+            HOUR = intent.getIntExtra(ACTION_GET_HOUR.OUTPUT_PARAMS.HOUR, -1);
         }
     }
 
@@ -61,6 +78,13 @@ public class MobileDataProvider extends IntentService {
     }
 
 
+    public static void startActionGetHour(Context context) {
+        Intent intent = new Intent(context, MobileDataProvider.class);
+        intent.setAction(ACTION_GET_HOUR.ACTION_NAME);
+        context.startService(intent);
+    }
+
+
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
@@ -68,6 +92,8 @@ public class MobileDataProvider extends IntentService {
 
             if (ACTION_GET_MOBILE_DATA.ACTION_NAME.equals(action)) {
                 handleActionGetMobileData();
+            } else if(ACTION_GET_HOUR.ACTION_NAME.equals(action)) {
+                handleActionGetHour();
             }
 
         }
@@ -82,12 +108,20 @@ public class MobileDataProvider extends IntentService {
         String telNumber = getTelephoneNumber();
         String telModel = getTelephoneModel();
         String telEmail = getEmail();
-        Integer hour = getHour();
         broadcastIntent.putExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_ID, getTelephoneId());
         broadcastIntent.putExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_NUMBER, getTelephoneNumber());
         broadcastIntent.putExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.TELEPHONE_MODEL, getTelephoneModel());
         broadcastIntent.putExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.EMAIL, getEmail());
-        broadcastIntent.putExtra(ACTION_GET_MOBILE_DATA.OUTPUT_PARAMS.HOUR, getHour());
+        sendBroadcast(broadcastIntent);
+    }
+
+
+    public void handleActionGetHour() {
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction(ACTION_GET_HOUR.ACTION_RESPONSE_NAME);
+        broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
+        Integer hour = getHour();
+        broadcastIntent.putExtra(ACTION_GET_HOUR.OUTPUT_PARAMS.HOUR, getHour());
         sendBroadcast(broadcastIntent);
     }
 

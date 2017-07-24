@@ -48,4 +48,12 @@ public class PermissionRegistry implements IPermissionRegistry {
         return _mapMessageResultCodeToPermission.keySet();
     }
 
+    public boolean checkIfGrantedByManifestName(String manifestName) {
+        if(checkPermissionByManifestName(manifestName)) {
+            Permission permission = getPermissionByManifestName(manifestName);
+            return permission.isGranted();
+        }
+        return false;
+    }
+
 }

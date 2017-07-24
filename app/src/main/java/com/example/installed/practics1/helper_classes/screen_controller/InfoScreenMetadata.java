@@ -5,6 +5,6 @@ package com.example.installed.practics1.helper_classes.screen_controller;
  */
 
 public class InfoScreenMetadata {
-    public String text;
+    public boolean areAllPermissionsGranted = false;
     public InfoScreenMetadata(){}
 }
